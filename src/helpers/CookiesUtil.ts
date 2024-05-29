@@ -10,3 +10,8 @@ export const getUser = (cookies: Cookies): User | null => {
 
 	return null;
 };
+
+export const deleteAllCookies = (cookies: Cookies) => {
+	cookies.set('user', '', { httpOnly: true, path: '/', maxAge: 0 });
+	cookies.set('accesstoken', '', { httpOnly: true, path: '/', maxAge: 0 });
+};
