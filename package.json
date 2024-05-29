@@ -34,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@material-design-icons/svg": "^0.14.13",
 		"axios": "^1.7.2"
 	}
 }
