@@ -1,7 +1,20 @@
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<script lang="ts">
+	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import LoadingIndicator from '$lib/LoadingIndicator.svelte';
 
-<style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.100);
-	}
-</style>
+	export let data: PageData;
+
+	$: ({ user } = data);
+
+	onMount(() => {
+		if (!user) {
+			goto('/login');
+		} else {
+			goto('/dashboard');
+		}
+	});
+</script>
+
+<LoadingIndicator />
