@@ -13,7 +13,7 @@
 
 	let isLoading: boolean = false;
 
-	const handleLoginAction: SubmitFunction = async () => {
+	const handleregisterAction: SubmitFunction = async () => {
 		isLoading = true;
 
 		return async ({ update }) => {
@@ -22,7 +22,7 @@
 		};
 	};
 
-	const toRegister = () => goto('register');
+	const toLogin = () => goto('login');
 </script>
 
 <LoadingDialog show={isLoading} />
@@ -42,23 +42,21 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div class="mt-5 mb-8 text-lg">
-				Do not have account?
-				<span class="font-bold text-orange-600 cursor-pointer" on:click={toRegister}
-					>Register Here</span
-				>.
+				Already have an account?
+				<span class="font-bold text-orange-600 cursor-pointer" on:click={toLogin}>Log in</span>.
 			</div>
 		</div>
 
-		{#if form?.success === false}
+		{#if form?.success}
 			<div class="mb-2">
-				<FlagBox isError description={form?.message ?? ''} />
+				<FlagBox isError={!form?.success} description={form?.message ?? ''} />
 			</div>
 		{/if}
 
-		<form method="POST" action="?/login" use:enhance={handleLoginAction}>
+		<form method="POST" action="?/register" use:enhance={handleregisterAction}>
 			<Input label="Username" name="username" type="text" placeholder="Your username here" />
 
-			<Button label="Log In" customClass="mt-4" />
+			<Button label="Create Account" customClass="mt-4" />
 		</form>
 
 		<div class="mt-20">© 2024 PT. Fliptech Lentera Inspirasi Pertiwi</div>

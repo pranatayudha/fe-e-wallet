@@ -1,19 +1,21 @@
 <script lang="ts">
 	import exclamationIcon from '$images/exclamation_icon.svg';
 
+	export let isError: boolean;
 	export let description: string;
 </script>
 
-<main>
-	<img src={exclamationIcon} alt="Exclamation Icon" />
+<main
+	class={`border rounded-lg ${isError ? 'bg-red-100 border-red-400' : 'bg-green-100 border-green-600'}`}
+>
+	{#if isError}
+		<img src={exclamationIcon} alt="Exclamation Icon" />
+	{/if}
 	<div class="desc">{description}</div>
 </main>
 
 <style>
 	main {
-		background: #fbe7e9;
-		border: 1px solid #d70c24;
-		border-radius: 8px;
 		padding: 12px;
 		display: flex;
 		align-items: center;
