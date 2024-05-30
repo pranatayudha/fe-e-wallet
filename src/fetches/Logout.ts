@@ -14,8 +14,8 @@ export const executeLogout = async (cookies: Cookies) => {
 
 		const responseBody = await res.json();
 
-		if (responseBody.code !== httpResponseStatusCodes.ok) {
-			if (responseBody.code === httpResponseStatusCodes.unauthorized) {
+		if (responseBody.statusCode !== httpResponseStatusCodes.ok) {
+			if (responseBody.statusCode === httpResponseStatusCodes.unauthorized) {
 				return { success: false, message: responseBody.message };
 			}
 
