@@ -95,11 +95,11 @@
 	</ul>
 </aside>
 
-<main class="pt-20">
-	<header class="fixed top-0 right-0 w-full h-20 bg-white shadow-md z-10 flex items-center px-4">
-		<img id="flip-logo" src={flipLogo} alt="Flip Logo" class="pl-6 h-10" />
+<main class="pt-12">
+	<header class="fixed top-0 right-0 w-full h-20 bg-white shadow-md z-10 flex px-4">
+		<img id="flip-logo" src={flipLogo} alt="Flip Logo" class="pl-6 h-10 self-center" />
 
-		<div class="flex items-center ml-auto gap-4">
+		<div class="flex self-center ml-auto gap-4">
 			<form
 				id="logout"
 				method="POST"
@@ -113,7 +113,6 @@
 						update({ reset: false });
 					};
 				}}
-				class="flex items-center gap-6"
 			>
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -128,7 +127,7 @@
 		</div>
 	</header>
 
-	<div class="place-content-center">
+	<div class="pl-80">
 		{#if !!$navigating}
 			<LoadingIndicator />
 		{:else}

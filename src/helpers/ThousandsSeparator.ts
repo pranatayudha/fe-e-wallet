@@ -17,7 +17,7 @@ export const setThousandsSeparator = (nominal: string | null | undefined, prefix
 		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 		const negative = nominal.charAt(0) == '-' ? '-' : '';
 
-		return rupiah ? `${prefix}${negative}${rupiah}` : '';
+		return rupiah ? `${negative}${prefix}${rupiah}` : '';
 	}
 };
 
