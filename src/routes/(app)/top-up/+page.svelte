@@ -12,7 +12,7 @@
 		confirmContentSchemeInitial,
 		type ConfirmContentScheme
 	} from '$types/ConfirmContentScheme';
-	import sendIcon from '@material-design-icons/svg/outlined/send.svg';
+	import walletIcon from '@material-design-icons/svg/outlined/account_balance_wallet.svg';
 	import type { ActionResult, SubmitFunction } from '@sveltejs/kit';
 	import { saveConfirm, successToNext } from '../(helpers)/ConfirmContent';
 	import type { ActionData } from './$types';
@@ -24,10 +24,9 @@
 	let contentConfirm: ConfirmContentScheme = confirmContentSchemeInitial;
 	let isLoading: boolean,
 		isShowConfirmDialog: boolean = false;
-	let transferSubmit: HTMLButtonElement;
+	let topUpSubmit: HTMLButtonElement;
 
-	let username: string = '',
-		amount: string = '';
+	let amount: string = '';
 
 	const errorEnhanceSave = (result: ActionResult) => {
 		contentConfirm = {
@@ -50,7 +49,7 @@
 		}
 
 		toggleConfirmDialog();
-		transferSubmit.click();
+		topUpSubmit.click();
 	};
 
 	const parseTransferRes = async (response: any) => {
@@ -73,13 +72,12 @@
 
 	const toggleConfirmDialog = () => (isShowConfirmDialog = !isShowConfirmDialog);
 
-	const transferEnhance: SubmitFunction = ({ formData }) => {
+	const topUpEnhance: SubmitFunction = ({ formData }) => {
 		isLoading = true;
 
 		formData.append(
-			'transferData',
+			'topUpData',
 			JSON.stringify({
-				username,
 				amount
 			})
 		);
@@ -89,8 +87,8 @@
 			switch (result.type) {
 				case 'success':
 					const dataResult: any = result.data;
-					const transferRes = dataResult.transferRes;
-					parseTransferRes(transferRes);
+					const topUpRes = dataResult.topUpRes;
+					parseTransferRes(topUpRes);
 					break;
 				default:
 					errorEnhanceSave(result);
@@ -118,19 +116,11 @@
 	on:confirm={onSubmitTransaction}
 />
 
-<form method="POST" action="?/transfer" use:enhance={transferEnhance}>
-	<button type="submit" hidden={true} bind:this={transferSubmit} />
+<form method="POST" action="?/topUp" use:enhance={topUpEnhance}>
+	<button type="submit" hidden={true} bind:this={topUpSubmit} />
 </form>
 
-<MenuLayout title="Transfer Money">
-	<InputForm
-		type="text"
-		name="username"
-		label="Username"
-		placeholder="Beneficiary username"
-		bind:value={username}
-	/>
-
+<MenuLayout title="Top Up Balance">
 	<InputForm
 		type="text"
 		name="amount"
@@ -144,8 +134,8 @@
 		<div class="w-1/4 md:w-full">
 			<Button
 				type="button"
-				label="Submit Transaction"
-				iconButton={sendIcon}
+				label="Submit Top Up"
+				iconButton={walletIcon}
 				buttonAction={() => {
 					contentConfirm = saveConfirm;
 					toggleConfirmDialog();

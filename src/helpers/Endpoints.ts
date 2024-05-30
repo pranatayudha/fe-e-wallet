@@ -7,4 +7,5 @@ export class Endpoints {
 	static getBalance = `${BASE_URL}/balance`;
 	static getTransactionHistory = `${BASE_URL}/transaction-history`;
 	static postTransfer = `${BASE_URL}/transfer`;
+	static postTopUp = `${BASE_URL}/topup`;
 }

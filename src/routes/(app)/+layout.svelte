@@ -117,7 +117,7 @@
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<span
-					class="p-2 text-orange-600 cursor-pointer font-medium"
+					class="p-2 text-orange-600 cursor-pointer font-semibold"
 					on:click={toggleConfirmLogoutDialog}
 					on:keypress={() => {}}
 				>
