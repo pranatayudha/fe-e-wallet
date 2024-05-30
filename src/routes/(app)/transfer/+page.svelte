@@ -123,34 +123,35 @@
 </form>
 
 <MenuLayout title="Transfer Money">
-	<InputForm
-		type="text"
-		name="username"
-		label="Username"
-		placeholder="Beneficiary username"
-		bind:value={username}
-	/>
+	<div class="w-1/2">
+		<InputForm
+			type="text"
+			name="username"
+			label="Username"
+			placeholder="Beneficiary username"
+			bind:value={username}
+		/>
 
-	<InputForm
-		type="text"
-		name="amount"
-		label="Amount"
-		placeholder="Transaction amount"
-		withThousandsSeparator={true}
-		bind:value={amount}
-	/>
-
-	<div class="py-8 pb-6 flex justify-end gap-4">
-		<div class="w-1/4 md:w-full">
-			<Button
-				type="button"
-				label="Submit Transaction"
-				iconButton={sendIcon}
-				buttonAction={() => {
-					contentConfirm = saveConfirm;
-					toggleConfirmDialog();
-				}}
-			/>
+		<InputForm
+			type="text"
+			name="amount"
+			label="Amount"
+			placeholder="Transaction amount"
+			withThousandsSeparator={true}
+			bind:value={amount}
+		/>
+		<div class="py-8 pb-6 flex justify-end gap-4">
+			<div class="w-1/2">
+				<Button
+					type="button"
+					label="Submit Transaction"
+					iconButton={sendIcon}
+					buttonAction={() => {
+						contentConfirm = saveConfirm;
+						toggleConfirmDialog();
+					}}
+				/>
+			</div>
 		</div>
 	</div>
 </MenuLayout>

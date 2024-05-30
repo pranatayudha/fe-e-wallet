@@ -121,26 +121,28 @@
 </form>
 
 <MenuLayout title="Top Up Balance">
-	<InputForm
-		type="text"
-		name="amount"
-		label="Amount"
-		placeholder="Transaction amount"
-		withThousandsSeparator={true}
-		bind:value={amount}
-	/>
+	<div class="w-1/2">
+		<InputForm
+			type="text"
+			name="amount"
+			label="Amount"
+			placeholder="Transaction amount"
+			withThousandsSeparator={true}
+			bind:value={amount}
+		/>
 
-	<div class="py-8 pb-6 flex justify-end gap-4">
-		<div class="w-1/4 md:w-full">
-			<Button
-				type="button"
-				label="Submit Top Up"
-				iconButton={walletIcon}
-				buttonAction={() => {
-					contentConfirm = saveConfirm;
-					toggleConfirmDialog();
-				}}
-			/>
+		<div class="py-8 pb-6 flex justify-end content-end gap-4">
+			<div class="w-1/2">
+				<Button
+					type="button"
+					label="Submit Top Up"
+					iconButton={walletIcon}
+					buttonAction={() => {
+						contentConfirm = saveConfirm;
+						toggleConfirmDialog();
+					}}
+				/>
+			</div>
 		</div>
 	</div>
 </MenuLayout>
