@@ -15,7 +15,7 @@
 </script>
 
 <Modal showModal={errorMessage}>
-	<main class="center" class:!hidden={!errorMessage}>
+	<main class:!hidden={!errorMessage} class="flex justify-center content-center my-40">
 		<div class="dialog w-72 bg-white rounded-lg p-4 text-left">
 			<h3 class="font-bold text-xl text-primary">Oops...</h3>
 			<div class="divider w-full h-px bg-gray-300 my-2"></div>
