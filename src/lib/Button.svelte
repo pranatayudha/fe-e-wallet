@@ -8,6 +8,7 @@
 	export let formMethod = 'POST';
 	export let formaction = '';
 	export let customClass = '';
+	export let iconButton = '';
 
 	function typeAction(node: HTMLButtonElement) {
 		node.type = type;
@@ -28,11 +29,16 @@
 	</form>
 {:else}
 	<button
-		class={`w-full h-12 text-white rounded-lg border border-transparent font-bold transition-colors ${customClass} bg-orange-600 hover:border-orange-700 focus:outline focus:outline-4`}
+		class={`w-full h-12 text-white rounded-lg border border-transparent font-bold transition-colors ${customClass} bg-orange-600 hover:border-orange-700 focus:outline focus:outline-4 flex justify-center items-center`}
 		use:typeAction
 		on:click={buttonAction}
 		{disabled}
 	>
+		{#if iconButton}
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<img class="align-middle w-6 h-6 pr-2" src={iconButton} />
+		{/if}
+
 		{label}
 	</button>
 {/if}

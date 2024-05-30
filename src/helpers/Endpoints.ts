@@ -6,4 +6,5 @@ export class Endpoints {
 	static postUsersLogout = `${BASE_URL}/logout`;
 	static getBalance = `${BASE_URL}/balance`;
 	static getTransactionHistory = `${BASE_URL}/transaction-history`;
+	static postTransfer = `${BASE_URL}/transfer`;
 }
