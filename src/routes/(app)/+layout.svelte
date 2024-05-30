@@ -59,6 +59,7 @@
 <LoadingDialog show={isLoading} />
 
 <BaseDialog
+	transformHorizCenter
 	show={showConfirmLogoutDialog}
 	title="Are you sure wanna logout?"
 	description=""
